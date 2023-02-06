@@ -179,9 +179,11 @@
             </div>
         </footer>
     </div>
+
+  {{-- <script src="{{asset('backend/asset/lib/gentelella/vendors/jquery/dist/jquery.min.js')}}"></script> --}}
     <script src="{{asset('frontend/asset/js/jquery.3.6.0.min.js')}}"></script>
     <script src="{{asset('frontend/asset/js/bootstrap.4.1.2.min.js')}}"></script>
-    <script src="styles/bootstrap-4.1.2/popper.js"></script>
+    {{-- <script src="styles/bootstrap-4.1.2/popper.js"></script>
     <script src="plugins/greensock/TweenMax.min.js"></script>
     <script src="plugins/greensock/TimelineMax.min.js"></script>
     <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
@@ -190,13 +192,13 @@
     <script src="plugins/OwlCarousel2-2.3.4/owl.carousel.js"></script>
     <script src="plugins/easing/easing.js"></script>
     <script src="plugins/progressbar/progressbar.min.js"></script>
-    <script src="plugins/parallax-js-master/parallax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script> --}}
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script> --}}
 
     <script src="{{asset('frontend/asset/js/template/custom.js')}}"></script>
 
-
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    @yield('script')
+    {{-- <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> --}}
 </body>
 
 </html>
