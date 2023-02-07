@@ -76,31 +76,31 @@
 <div class="row">
   <div style="background: #f7f7f7;padding: 1rem;margin: 0px -7px;margin-top: -10px;box-shadow: 1px 3px 2px 0px #b3c1c5;display: flex;flex-wrap: wrap;">
     <div style="padding-right: 20px;">
-      <button type="button" class="button_control button_small btn_control_secondary"><i class="fa fa-spinner"></i></button>
+      <button type="button" class="button_control button_small btn-secondary btn"><i class="fa fa-spinner"></i></button>
       <span style="font-weight: bold;">Esperando Contrato</span>
     </div>
     <div style="padding-right: 20px;">
-      <button type="button" class="button_control button_small btn_control_info"><i class="fa fa-eye"></i></button>
+      <button type="button" class="button_control button_small btn-info btn"><i class="fa fa-eye"></i></button>
       <span style="font-weight: bold;">Ver Contrato</span>
     </div>
     <div style="padding-right: 20px;">
-      <button type="button" class="button_control button_small btn_control_danger"><i class="fa fa-trash"></i></button>
+      <button type="button" class="button_control button_small btn-danger btn"><i class="fa fa-trash"></i></button>
       <span style="font-weight: bold;">No acepto</span>
     </div>
     <div style="padding-right: 20px;">
-      <button type="button" class="button_control button_small btn_control_success "><i class="fa fa-check"></i></button>
+      <button type="button" class="button_control button_small btn-success btn"><i class="fa fa-check"></i></button>
       <span style="font-weight: bold;">Confirmar Alquiler</span>
     </div>
     <div style="padding-right: 20px;">
-      <button type="button" class="button_control button_small btn_control_success"><i class="fa fa-thumbs-up"></i></button>
+      <button type="button" class="button_control button_small btn-success btn"><i class="fa fa-thumbs-up"></i></button>
       <span style="font-weight: bold;">Alquilado</span>
     </div>
     <div>
-      <button type="button" class="button_control button_small btn_control_warning"><i class="fa fa-spinner"></i></button>
+      <button type="button" class="button_control button_small btn-warning btn"><i class="fa fa-spinner"></i></button>
       <span style="font-weight: bold;">Esperando Notificación Alquiler</span>
     </div>
-  </div> 
-  <div class="col-xs-12" id="content-tabla" style="    margin-top: 20px;">
+  </div>
+  <div class="col-12" id="content-tabla" style="    margin-top: 20px;">
     <table id="table_info" class="table table-striped jambo_table bulk_action" style="width:100%">
     </table>
   </div>

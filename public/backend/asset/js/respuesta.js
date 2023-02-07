@@ -78,27 +78,27 @@ $(document).ready(function () {
                         render:function (data,type,row) {
                             if (row.notificacion =="SI") {
                               if (row.id_alquiler != null) {
-                                return `<a href="${row.url_contrato_sin}" target="_black"><button type="button" class="button_control button_small btn_control_info"><i class="fa fa-eye"></i></button></a>
-                                  <button data-key="${row.id_contrato}" type="button" class="button_control button_small btn_control_primary"><i class="fa fa-thumbs-up"></i></button>`;
+                                return `<a href="${row.url_contrato_sin}" target="_black"><button type="button" class="button_control button_small btn-info btn"><i class="fa fa-eye"></i></button></a>
+                                  <button data-key="${row.id_contrato}" type="button" class="button_control button_small btn-primary btn"><i class="fa fa-thumbs-up"></i></button>`;
                               }else{
-                                return `<a href="${row.url_contrato_sin}" target="_black"><button type="button" class="button_control button_small btn_control_info"><i class="fa fa-eye"></i></button></a>
-                                  <button data-key="${row.id_contrato}" type="button" class="button_control button_small btn_control_success btn_aceptar_alquiler"><i class="fa fa-check"></i></button>`;
+                                return `<a href="${row.url_contrato_sin}" target="_black"><button type="button" class="button_control button_small btn-info btn"><i class="fa fa-eye"></i></button></a>
+                                  <button data-key="${row.id_contrato}" type="button" class="button_control button_small btn-success btn btn_aceptar_alquiler"><i class="fa fa-check"></i></button>`;
                               }
-                                
+
                             }else{
                               if(row.aceptar == 'SI'){
                                 if (row.url_contrato_sin != null) {
-                                  return `<a href="${row.url_contrato_sin}" target="_black"><button type="button" class="button_control button_small btn_control_info"><i class="fa fa-eye"></i></button></a>
-                                  <button type="button" class="button_control button_small btn_control_warning"><i class="fa fa-spinner"></i></button>`;  
+                                  return `<a href="${row.url_contrato_sin}" target="_black"><button type="button" class="button_control button_small btn-info btn"><i class="fa fa-eye"></i></button></a>
+                                  <button type="button" class="button_control button_small btn-warning btn"><i class="fa fa-spinner"></i></button>`;
                                 }else{
-                                  return `<button type="button" class="button_control button_small btn_control_secondary"><i class="fa fa-spinner"></i></button>`; 
+                                  return `<button type="button" class="button_control button_small btn-secondary btn"><i class="fa fa-spinner"></i></button>`;
                                 }
                               }else{
-                                return `<button type="button" class="button_control button_small btn_control_danger"><i class="fa fa-trash"></i></button>`;  
+                                return `<button type="button" class="button_control button_small btn-danger btn"><i class="fa fa-trash"></i></button>`;
                               }
                             }
-                            
-                            
+
+
                         }
                     },
                     ],
@@ -218,7 +218,7 @@ $('#content-tabla').on('click','.btn_aceptar_alquiler',function () {
           confirmButtonText: 'Listo',
           width:'40rem'
         })
-        
+
         location.reload();
       }else{
         Swal.fire({
