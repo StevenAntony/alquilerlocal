@@ -90,26 +90,26 @@ $(document).ready(function () {
                                 if (row.Contrato != null) {
                                   if (row.Notifico == 'SI') {
                                     if (row.Alquiler == null) {
-                                      return `<a href="${row.URLContrato}" target="_black"><button type="button" class="button_control button_small btn_control_info"><i class="fa fa-eye"></i></button></a>
-                                    <button type="button" class="button_control button_small btn_control_secondary"><i class="fa fa-spinner"></i></button>`;
+                                      return `<a href="${row.URLContrato}" target="_black"><button type="button" class="button_control button_small btn-info btn"><i class="fa fa-eye"></i></button></a>
+                                    <button type="button" class="button_control button_small btn-secondary btn"><i class="fa fa-spinner"></i></button>`;
                                     }else{
-                                      return `<a href="${row.URLContrato}" target="_black"><button type="button" class="button_control button_small btn_control_info"><i class="fa fa-eye"></i></button></a>
-                                    <button type="button" class="button_control button_small btn_control_success"><i class="fa fa-thumbs-up"></i></button>`;
+                                      return `<a href="${row.URLContrato}" target="_black"><button type="button" class="button_control button_small btn-info btn"><i class="fa fa-eye"></i></button></a>
+                                    <button type="button" class="button_control button_small btn-success btn"><i class="fa fa-thumbs-up"></i></button>`;
                                     }
-                                    
+
                                   }else{
-                                    return `<a href="${row.URLContrato}" target="_black"><button type="button" class="button_control button_small btn_control_info"><i class="fa fa-eye"></i></button></a>
-                                      <button data-key="${row.Contrato}" type="button" class="button_control button_small btn_control_success btn_alquiler_terminar"><i class="fa fa-university"></i></button>`;
-                                    
+                                    return `<a href="${row.URLContrato}" target="_black"><button type="button" class="button_control button_small btn-info btn"><i class="fa fa-eye"></i></button></a>
+                                      <button data-key="${row.Contrato}" type="button" class="button_control button_small btn-success btn btn_alquiler_terminar"><i class="fa fa-university"></i></button>`;
+
                                   }
                                 }else{
-                                  return `<button data-key="${row.id_solicitud}" type="button" class="button_control button_small btn_control_warning btn_alquiler"><i class="fa fa-thumb-tack"></i></button>`;
+                                  return `<button data-key="${row.id_solicitud}" type="button" class="button_control button_small btn-warning btn btn_alquiler"><i class="fa fa-thumb-tack"></i></button>`;
                                 }
                               }else{
-                                return `<button type="button" class="button_control button_small btn_control_danger"><i class="fa fa-trash"></i></button>`;
+                                return `<button type="button" class="button_control button_small btn-danger btn"><i class="fa fa-trash"></i></button>`;
                               }
                             }else{
-                              return `<button data-key="${row.id_solicitud}" type="button" class="button_control button_small btn_control_info btn_responder"><i class="fa fa-send"></i></button>`;
+                              return `<button data-key="${row.id_solicitud}" type="button" class="button_control button_small btn-info btn btn_responder"><i class="fa fa-send"></i></button>`;
                             }
                         }
                     },
@@ -179,7 +179,7 @@ $('.btn_proceso').click(function () {
               confirmButtonText: 'Aceptar',
               confirmButtonColor: '#3085d6'
             });
-            
+
             $('#modal_responder').modal('hide');
             location.reload();
           }else{

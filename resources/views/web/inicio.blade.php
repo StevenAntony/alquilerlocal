@@ -74,14 +74,16 @@
                             <form action="#" class="search_form" id="search_form">
                                 <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
                                     <div class="search_inputs d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-                                        <input type="text" class="search_input" placeholder="Evento o Alquiler"
+                                        <select name="itmTipo" class="search_input" id="itmTipo">
+                                            <option value="Evento">Evento</option>
+                                            <option value="Alquiler">Alquiler</option>
+                                        </select>
+                                        <input type="text" class="search_input" id="itmCapacidad" placeholder="Capacidad"
                                             required="required">
-                                        <input type="text" class="search_input" placeholder="Capacidad"
-                                            required="required">
-                                        <input type="text" class="search_input" placeholder="Lugar"
+                                        <input type="text" class="search_input" id="itmDescripcion" placeholder="Descripción"
                                             required="required">
                                     </div>
-                                    <button class="search_button">Buscar</button>
+                                    <button type="button" class="search_button btn-buscar-pub">Buscar</button>
                                 </div>
                             </form>
                         </div>
@@ -108,6 +110,8 @@
                         <div class="col-lg-4">
                             <div class="listing">
                                 <div class="listing_image">
+                                    <span class="badge-{{$item->tipo == 'Evento' ? 'warning' : 'info'}} badge"
+                                        style="position: absolute;top: 10px;z-index: 1;padding: 5px 10px;right: 10px;">{{$item->tipo}}</span>
                                     <div class="listing_image_container" style="width: 100%!important;height: 200px;">
                                         @php
                                             $img =  $item->imagen == null ?'frontend\asset\img\camera.jpg' :$item->imagen
@@ -158,11 +162,19 @@
 @endsection
 @section('script')
     <script>
+        const valores = window.location.search;
+        const urlParams = new URLSearchParams(valores);
+
+        $('#itmTipo').val(urlParams.get('tipo'))
+        $('#itmCapacidad').val(urlParams.get('capacidad'))
+        $('#itmDescripcion').val(urlParams.get('descripcion'))
         // $('.content-paginacion nav .inline-flex:first-child').html('«');
         // $('.content-paginacion nav .inline-flex:last-child').html('»');
         $('.btn-buscar-pub').click(function () {
-           var buscar = $('#itmBuscarPunlicacion').val();
-           window.location.href = `?buscar=${buscar}`;
+           var tipo = $('#itmTipo').val();
+           var capacidad = $('#itmCapacidad').val();
+           var descripcion = $('#itmDescripcion').val();
+           window.location.href = `?tipo=${tipo}&capacidad=${capacidad}&descripcion=${descripcion}`;
         });
     </script>
 @endsection

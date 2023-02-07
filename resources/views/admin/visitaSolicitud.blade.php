@@ -79,32 +79,32 @@
 <div class="row">
   <div style="background: #f7f7f7;padding: 1rem;margin: 0px -7px;margin-top: -10px;box-shadow: 1px 3px 2px 0px #b3c1c5;display: flex;flex-wrap: wrap;">
     <div style="padding-right: 20px;">
-      <button type="button" class="button_control button_small btn_control_info "><i class="fa fa-send"></i></button>
-      <span style="font-weight: bold;">Responder</span>
+      <button type="button" class="button_control button_small btn-info btn "><i class="fa fa-send"></i></button>
+      <span style="font-weight: bold;" class="text-dark">Responder</span>
     </div>
     <div style="padding-right: 20px;">
-      <button type="button" class="button_control button_small btn_control_warning"><i class="fa fa-thumb-tack"></i></button>
+      <button type="button" class="button_control button_small btn-warning btn"><i class="fa fa-thumb-tack"></i></button>
       <span style="font-weight: bold;">Generar Contrato</span>
     </div>
     <div style="padding-right: 20px;">
-      <button  type="button" class="button_control button_small btn_control_success"><i class="fa fa-university"></i></button>
+      <button  type="button" class="button_control button_small btn-success btn"><i class="fa fa-university"></i></button>
       <span style="font-weight: bold;">Notificar para Alquiler</span>
     </div>
     <div style="padding-right: 20px;">
-      <button type="button" class="button_control button_small btn_control_danger"><i class="fa fa-trash"></i></button>
+      <button type="button" class="button_control button_small btn-danger btn"><i class="fa fa-trash"></i></button>
       <span style="font-weight: bold;">Solicitud Rechazada</span>
     </div>
     <div style="padding-right: 20px;">
-      <button type="button" class="button_control button_small btn_control_success"><i class="fa fa-thumbs-up"></i></button>
+      <button type="button" class="button_control button_small btn-success btn"><i class="fa fa-thumbs-up"></i></button>
       <span style="font-weight: bold;">Alquilado</span>
     </div>
     <div >
-      <button type="button" class="button_control button_small btn_control_secondary"><i class="fa fa-spinner"></i></button>
+      <button type="button" class="button_control button_small btn-secondary btn"><i class="fa fa-spinner"></i></button>
       <span style="font-weight: bold;">Esperando Confirmación</span>
     </div>
-    
-  </div>  
-  <div class="col-xs-12" id="content-tabla" style="    margin-top: 20px;">
+
+  </div>
+  <div class="col-12" id="content-tabla" style="    margin-top: 20px;">
     <table id="table_info" class="table table-striped jambo_table bulk_action" style="width:100%">
     </table>
   </div>
@@ -112,16 +112,16 @@
 <div class="modal fade" id="modal_responder" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-          </button>
-          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-comment"></i> Responder</h4>
-      </div>
+        <div class="modal-header" style="flex-direction: row-reverse">
+            <button type="button" class="close" style="margin: 0px; padding: 0px" data-dismiss="modal"><span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-comment"></i> Responder</h4>
+        </div>
       <div class="modal-body">
         <form class="" id="formProceso" action="{{route('app.respuestasolicitud')}}" method="post">
           @csrf
           <input type="hidden" name="itmSolicitud" id="itmSolicitud" value="">
-          <div class="d-flex">
+          <div class="d-flex flex-wrap">
             <div class="col-md-12">
               <input type="checkbox" class="input_control" id="itmAceptar" name="itmAceptar" value="SI">
               <label for="itmAceptar">Aceptar Demostración</label>
@@ -133,8 +133,8 @@
         </form>
       </div>
       <div class="modal-footer">
-          <button type="button" class="button_control btn_control-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
-          <button type="button" class="button_control btn_proceso"> <i class="fa fa-save"></i> Responder</button>
+          <button type="button" class="button_control btn-danger btn btn_control-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
+          <button type="button" class="button_control btn-info btn btn_proceso"> <i class="fa fa-save"></i> Responder</button>
       </div>
     </div>
   </div>
@@ -177,46 +177,48 @@
 <div class="modal fade" id="modal_alquilar"  tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-          </button>
-          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i> Contrato</h4>
-      </div>
+        <div class="modal-header" style="flex-direction: row-reverse">
+            <button type="button" class="close" style="margin: 0px; padding: 0px" data-dismiss="modal"><span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i> Contrato</h4>
+        </div>
       <div class="modal-body">
         <form class="" target="_blank" id="formContrato"  action="{{route('app.generarcontrato')}}" method="post">
           @csrf
           <input type="hidden" name="itmSolicitud" id="itmSolicitudContrato" value="">
-          <div class="row">
-            <div class="col-md-4 px-3 pt-5 pb-3">
+          <div class="d-flex flex-wrap">
+            <div class="col-md-6 px-3">
               <div class="input-container-main">
-                <input id="itmFechaInicio" type="date" text-validate="Ingrese Fecha Inicio Contrato" name="itmFechaInicio" autocomplete="off" class="validar-formulario input-form-main"  value="" placeholder="">
                 <label style="width: 50%;" for="itmFechaInicio" class="label-form-main" style="">Fecha Inciar</label>
+                <input id="itmFechaInicio" type="date" text-validate="Ingrese Fecha Inicio Contrato" name="itmFechaInicio" autocomplete="off"
+                class="validar-formulario input-form-main form-control"  value="" placeholder="">
               </div>
             </div>
-            <div class="col-md-4 px-3 pt-5 pb-3">
+            <div class="col-md-6 px-3">
               <div class="input-container-main">
-                <input id="itmFechaFin" type="date" text-validate="Ingrese Fecha Culmina Contrato" name="itmFechaFin" autocomplete="off" class="validar-formulario input-form-main"  value="" placeholder="">
                 <label style="width: 50%;" for="itmFechaFin" class="label-form-main" style="">Fecha Fin</label>
+                <input id="itmFechaFin" type="date" text-validate="Ingrese Fecha Culmina Contrato" name="itmFechaFin" autocomplete="off"
+                 class="validar-formulario input-form-main form-control"  value="" placeholder="">
               </div>
             </div>
-            <div class="col-md-4 px-3 pt-5 pb-3" style="display: none">
+            <div class="col-md-4 px-3" style="display: none">
               <div class="input-container-main">
                 <input id="itmPrecioAlquiler" type="number" name="itmPrecioAlquiler" autocomplete="off" class="input-form-main"  value="" placeholder="">
                 <label for="itmPrecioAlquiler" class="label-form-main" style="">Precio Alquiler</label>
               </div>
             </div>
-            <div class="col-md-12 px-3 pt-5 pb-3">
+            <div class="col-md-12 px-3 pt-3">
               <div class="input-container-main">
-                <input id="itmInfo" type="text" text-validate="Ingrese una Respuesta" name="itmInfo" autocomplete="off" class="validar-formulario input-form-main"  value="" placeholder="">
                 <label style="width: 50%;" for="itmInfo" class="label-form-main" style="">Breve Descripción Propiedad</label>
+                <input id="itmInfo" type="text" text-validate="Ingrese una Respuesta" name="itmInfo" autocomplete="off" class="validar-formulario input-form-main form-control"  value="" placeholder="">
               </div>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-          <button type="button" class="button_control btn_control-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
-          <button type="button" class="button_control btn_proceso_contrato"> <i class="fa fa-save"></i> Generar Contrato</button>
+          <button type="button" class="button_control btn-danger btn btn_control-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
+          <button type="button" class="button_control btn-info btn btn_proceso_contrato"> <i class="fa fa-save"></i> Generar Contrato</button>
       </div>
     </div>
   </div>

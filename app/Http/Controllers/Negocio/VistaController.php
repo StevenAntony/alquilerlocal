@@ -13,18 +13,20 @@ class VistaController extends Controller
     {
         $NuevaPropiedades = DB::table('pt_propiedad as pr')
             ->where('pr.estado','!=','ANU');
-        if ($request->query('buscar') != null) {
+        if ($request->query('tipo') != null) {
             $NuevaPropiedades = $NuevaPropiedades
+                ->where('pr.tipo','=',$request->query('tipo'))
+                ->where('pr.capacidad','>=',$request->query('capacidad'))
                 ->where( function($query) use ($request){
-                    $query->orWhere('pr.descripcion','LIKE','%'.$request->query('buscar').'%')
-                    ->orWhere(DB::raw('(SELECT pro.nombre FROM pt_ubigeo_provincia as pro WHERE pro.id_provincia = pr.provincia)'),'LIKE','%'.$request->query('buscar').'%')
-                    ->orWhere(DB::raw('(SELECT dp.nombre FROM pt_ubigeo_departamento as dp WHERE dp.id_departamento = pr.departamento)'),'LIKE','%'.$request->query('buscar').'%')
-                    ->orWhere(DB::raw('(SELECT dis.nombre FROM pt_ubigeo_distrito as dis WHERE dis.id_distrito = pr.distrito)'),'LIKE','%'.$request->query('buscar').'%')
-                    ->orWhere('pr.informacion','LIKE','%'.$request->query('buscar').'%');
+                    $query->orWhere('pr.descripcion','LIKE','%'.$request->query('descripcion').'%')
+                    ->orWhere(DB::raw('(SELECT pro.nombre FROM pt_ubigeo_provincia as pro WHERE pro.id_provincia = pr.provincia)'),'LIKE','%'.$request->query('descripcion').'%')
+                    ->orWhere(DB::raw('(SELECT dp.nombre FROM pt_ubigeo_departamento as dp WHERE dp.id_departamento = pr.departamento)'),'LIKE','%'.$request->query('descripcion').'%')
+                    ->orWhere(DB::raw('(SELECT dis.nombre FROM pt_ubigeo_distrito as dis WHERE dis.id_distrito = pr.distrito)'),'LIKE','%'.$request->query('descripcion').'%')
+                    ->orWhere('pr.informacion','LIKE','%'.$request->query('descripcion').'%');
                 });
         }
         $NuevaPropiedades = $NuevaPropiedades->orderBy('publicacion_fecha', 'DESC');
-        if ($request->query('buscar') != null) {
+        if ($request->query('tipo') != null) {
             $NuevaPropiedades= $NuevaPropiedades->get();
         }else{
             $NuevaPropiedades= $NuevaPropiedades->paginate(20);

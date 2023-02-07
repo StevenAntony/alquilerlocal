@@ -15,7 +15,10 @@
     <title>{{ config('app.name') }} | </title>
 
     <!-- Custom fonts for this template-->
+
     <link href="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="{{asset('backend/asset/lib/gentelella/vendors/font-awesome/css/font-awesome.min.css')}}">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -230,6 +233,21 @@
     <!-- Custom scripts for all pages-->
     <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/js/sb-admin-2.min.js"></script>
     <script>
+        function ValidarFormularios(content) {
+            var validar = $(content+' .validar-formulario');
+            var pass = true;
+            var mensaje = [];
+            // console.log(validar);
+            validar.each(function(){
+                // console.log($(this).val().trim().length);
+                if ($(this).val().trim().length <= 0 && $(this).prop('disabled') == false) {
+                pass = false;
+                mensaje.push($(this).attr('text-validate'))
+                }
+            });
+
+            return [pass,mensaje];
+        }
         function uuidv4() {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
                 var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
