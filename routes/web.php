@@ -61,4 +61,7 @@ Route::middleware([AuthRuta::class])->group(function () {
     Route::post('/aceptar-alquiler',[VistaAppController::class,'AceptarAlquiler'])->name('app.aceptaralquiler');
 
     Route::post('/cerrar_sesion',[AuthController::class,'CerrarSesion'])->name('app.cerrarsesion');
+
+    Route::post('/eliminar-publicacion',[VistaAppController::class,'eliminarPublicacion'])->name('app.eliminarpublicacion');
+    Route::post('/editar-publicacion',[VistaAppController::class,'editarPublicacion'])->name('app.editarpublicacion');
 });

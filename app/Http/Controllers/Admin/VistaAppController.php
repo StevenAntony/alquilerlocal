@@ -427,4 +427,26 @@ class VistaAppController extends Controller
 
     return response()->json(self::$Response,self::$Code,self::$Header);
   }
+
+  public function eliminarPublicacion(REQUEST $request)
+  {
+    try {
+      $proceso = DB::table('pt_propiedad')->where('id_propiedad','=',$request->IdPropiedad)->update([
+        'estado' => 'ANU'
+      ]);
+      self::$Response['Mesagge'] = 'Se eliminó el publicacion';
+      self::$Response['Data'] = $proceso;
+    } catch (\Exception $e) {
+      self::$Response['Status'] = 'Error';
+      self::$Response['Meta']['Error_Type'] = 'Server';
+      self::$Response['Meta']['Error_Message'] = 'Error en el servicio';
+      self::$Response['Meta']['Code'] = 500;
+      if (self::$Response['Meta']['Debug']) {
+        self::$Response['Meta']['Error_Tecnico'] = $e->getMessage();
+      }
+    }
+
+    return response()->json(self::$Response,self::$Code,self::$Header);
+  }
+
 }

@@ -99,14 +99,14 @@
 
   <div class="d-flex" style="height:100vh">
     <div class="col-md-8">
-      <img class="w-100 h-100" src="https://www.ngenespanol.com/wp-content/uploads/2018/08/Playas-espectaculares-en-Per%C3%BA-770x413.jpg" alt="">
+      <img class="w-100 h-100" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="">
     </div>
     <div class="col-md-4">
       <div class="formularo p-5 my-5">
         <div class="text-center">
-          <h1><img src="{{asset('frontend\asset\img\logoInvertido.svg')}}" style="width: 350px;" alt=""></h1>
+          <h1><img src="{{asset('logo.png')}}" style="width: 200px;" alt=""></h1>
         </div>
-        <div class="content mt-5" >
+        <div class="content" >
           <form class="" action="{{route('web.iniciarsesionproceso')}}" id="formAuth" method="post">
             @csrf
             <div class="d-flex flex-wrap" style="background-color: #f3f7f8;">

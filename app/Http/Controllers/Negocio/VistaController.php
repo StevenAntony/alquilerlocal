@@ -13,7 +13,7 @@ class VistaController extends Controller
     {
         $NuevaPropiedades = DB::table('pt_propiedad as pr')
             ->where('pr.estado','!=','ANU');
-        if ($request->query('tipo') != null) {
+        if ($request->query('tipo') != null && $request->query('capacidad') != null && $request->query('descripcion')!=null) {
             $NuevaPropiedades = $NuevaPropiedades
                 ->where('pr.tipo','=',$request->query('tipo'))
                 ->where('pr.capacidad','>=',$request->query('capacidad'))
@@ -26,7 +26,7 @@ class VistaController extends Controller
                 });
         }
         $NuevaPropiedades = $NuevaPropiedades->orderBy('publicacion_fecha', 'DESC');
-        if ($request->query('tipo') != null) {
+        if ($request->query('tipo') != null && $request->query('capacidad') != null && $request->query('descripcion')!=null) {
             $NuevaPropiedades= $NuevaPropiedades->get();
         }else{
             $NuevaPropiedades= $NuevaPropiedades->paginate(20);

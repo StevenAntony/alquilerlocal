@@ -61,7 +61,9 @@
             </div>
 
             <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                <div class="logo"><a href="#">my<span>home</span></a></div>
+                <div class="logo">
+                    <img src="{{asset('logo.png')}}" alt="" style="width: 100%;height: 100%;">
+                </div>
                 <nav class="main_nav">
                     <ul class="d-flex flex-row align-items-start justify-content-start">
                         <li class="active"><a href="{{route('web.inicio')}}">Inicio</a></li>
@@ -76,17 +78,17 @@
             <div class="menu_log_reg">
                 <div class="log_reg d-flex flex-row align-items-center justify-content-end">
                     <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Register</a></li>
+                        @if(empty($Auth))
+                            <li><a href="{{route('web.iniciarsesion')}}">Ingresar</a></li>
+                        @else
+                            <li><a href="{{route('app.inicio')}}">{{$Auth->nombre}}</a></li>
+                        @endif
+                        <li><a href="{{route('web.arrendador')}}">Registrar</a></li>
                     </ul>
                 </div>
                 <nav class="menu_nav">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="listings.html">Listings</a></li>
-                        <li><a href="blog.html">News</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{{route('web.inicio')}}">Inicio</a></li>
                     </ul>
                 </nav>
             </div>
